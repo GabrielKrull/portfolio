@@ -1,7 +1,19 @@
-let nome = "Gabriel";
+const botao = document.getElementById("modoClaroEscuro");
 
-let frase = "Isso é uma frase.";
+let claro = true; // começa escuro (preto)
 
-let numeroTexto = "42"
+botao.addEventListener("click", () => {
+    if (claro) {
 
-console.log(typeof numeroTexto)
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        botao.textContent = "Modo claro";
+    } else {
+
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        botao.textContent = "Modo escuro";
+    }
+
+    claro = !claro;
+});
