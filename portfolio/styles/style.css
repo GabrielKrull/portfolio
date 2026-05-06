@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+/* ── Tema padrão: escuro ── */
+:root {
+    --bg-color: #281a2e;
+    --text-color: #c5e2f3;
+    --btn-bg: #6d2aab;
+    --btn-color: #c5e2f3;
+    --btn-border: #c5e2f3;
+    --resultado-bg: #2a1a4e;
+    --resultado-color: #c5e2f3;
+    --resultado-border: #6d2aab;
+}
+
+/* ── Tema claro: ativado via atributo no <html> ── */
+[data-theme="light"] {
+    --bg-color: #f0f4f8;
+    --text-color: #2a1a2e;
+    --btn-bg: #c5e2f3;
+    --btn-color: #6d2aab;
+    --btn-border: #6d2aab;
+    --resultado-bg: #ddeeff;
+    --resultado-color: #1a1a2e;
+    --resultado-border: #6d2aab;
+}
+
+[data-theme="light"] #resultado-quiz.front-end {
+    --resultado-bg: #e8f4fd;
+    --resultado-color: #1a1a2e;
+    --resultado-border: #2a7ab5;
+}
+
+[data-theme="light"] #resultado-quiz.back-end {
+    --resultado-bg: #e8f8f0;
+    --resultado-color: #1a1a2e;
+    --resultado-border: #2ab56a;
+
+}
+
+#resultado-quiz.full-stack {
+    --resultado-bg: #3a2a1a;
+    --resultado-color: #c5e2f3;
+    --resultado-border: #b57a2a;
+}
+
+[data-theme="light"] #resultado-quiz.full-stack {
+    --resultado-bg: #fdf3e8;
+    --resultado-color: #1a1a2e;
+    --resultado-border: #b57a2a;
+}
+
+* {
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+main {
+    font-family: "Google Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#modoClaroEscuro {
+    width: fit-content;
+    padding: 5px 10px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border: 1px solid var(--btn-border);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#resultado-quiz.front-end {
+    --resultado-bg: #1a3a5c;
+    --resultado-color: #c5e2f3;
+    --resultado-border: #2a7ab5;
+}
+
+#resultado-quiz.back-end {
+    --resultado-bg: #1a3a2a;
+    --resultado-color: #c5e2f3;
+    --resultado-border: #2ab56a;
+}
+
+#resultado-quiz {
+    border-radius: 7px;
+    padding: 10px;
+    margin-top: 10px;
+    min-height: 40px;
+}
+
+/* só aplica cor quando tiver uma classe de resultado */
+#resultado-quiz.front-end,
+#resultado-quiz.back-end,
+#resultado-quiz.full-stack {
+    background-color: var(--resultado-bg);
+    color: var(--resultado-color);
+    border: 1px solid var(--resultado-border);
+}
