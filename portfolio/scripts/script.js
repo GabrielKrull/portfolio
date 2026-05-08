@@ -4,8 +4,8 @@ const btn = document.getElementById('modoClaroEscuro');
 
         btn.addEventListener('click', () => {
             const isLight = html.getAttribute('data-theme') === 'light';
-         btn.innerHTML = isLight ? '<span class="material-icons">light_mode</span> Modo Claro'
-                        : '<span class="material-icons">dark_mode</span> Modo Escuro';
+         btn.innerHTML = isLight ? '<span class="material-icons">light_mode</span>'
+                        : '<span class="material-icons">dark_mode</span>';
             html.setAttribute('data-theme', isLight ? 'dark' : 'light');
         });
 

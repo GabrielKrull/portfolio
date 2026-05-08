@@ -4,9 +4,9 @@
 :root {
     --bg-color: #281a2e;
     --text-color: #c5e2f3;
-    --btn-bg: #6d2aab;
+    --btn-bg: #40116b;
     --btn-color: #c5e2f3;
-    --btn-border: #c5e2f3;
+    --btn-border: #010102;
     --resultado-bg: #2a1a4e;
     --resultado-color: #c5e2f3;
     --resultado-border: #6d2aab;
@@ -59,11 +59,57 @@ body {
     color: var(--text-color);
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-content: center; 
+    justify-content: center;
+    gap: 150px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--text-color);
+    font-family: "Google Sans", sans-serif;
+    font-size: 1.5rem;
+
+    padding: 10px 20px;
+    border-radius: 7px;
+
+    display: inline-block;
+
+    transition:
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        color 0.25s ease;
+}
+
+
+a:hover{
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    transform: translateY(-2px);
+}
+
 main {
     font-family: "Google Sans", sans-serif;
     display: flex;
     flex-direction: column;
     padding: 20px;
+}
+
+h1{
+    font-size: 5.5rem;
+    font-weight: 700;
+
 }
 
 button {
@@ -72,14 +118,20 @@ button {
     gap: 6px;
 }
 
-#modoClaroEscuro {
+
+#modoClaroEscuro, #btn-visual, #btn-logica {
     width: fit-content;
     padding: 5px 10px;
     background-color: var(--btn-bg);
     color: var(--btn-color);
-    border: 1px solid var(--btn-border);
+    border: none;
     border-radius: 7px;
     cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+#modoClaroEscuro:hover, #btn-visual:hover, #btn-logica:hover {
+    transform: translateY(-2px);
 }
 
 #resultado-quiz.front-end {
