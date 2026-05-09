@@ -1,4 +1,3 @@
-
 const btn = document.getElementById('modoClaroEscuro');
         const html = document.documentElement;
 
@@ -117,6 +116,32 @@ switch (diaSemana){
 
 }
 
+// ─── HABILIDADES ──────────────────────────────────────────────
+const habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
+
+const listaHabilidades = document.getElementById("lista-habilidades");
+
+const icones = {
+  HTML:   "code",
+  CSS:    "palette",
+  JS:     "javascript",
+  Python: "terminal",
+  SQL:    "storage",
+  Java:   "coffee"
+};
+
+for (let i = 0; i < habilidades.length; i++) {
+  const li = document.createElement("li");
+  li.classList.add("habilidade-item");
+
+  li.innerHTML = `
+    <span class="material-icons habilidade-icon">${icones[habilidades[i]] ?? "star"}</span>
+    <span class="habilidade-nome">${habilidades[i]}</span>
+  `;
+
+  listaHabilidades.appendChild(li);
+}
+
 // ─── QUIZ DE PERFIL ───────────────────────────────────────────
 const btnVisual     = document.getElementById("btn-visual");
 const btnLogica     = document.getElementById("btn-logica");
@@ -158,5 +183,3 @@ function exibirPerfil() {
       Tecnologias pra você: HTML, CSS, Node.js, React, bancos de dados.`;
   }
 }
-
-

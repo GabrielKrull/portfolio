@@ -153,7 +153,53 @@ button {
     min-height: 40px;
 }
 
-/* só aplica cor quando tiver uma classe de resultado */
+
+/* ── Seção de Habilidades ── */
+#habilidades {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+#habilidades h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-color);
+}
+
+#lista-habilidades {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 0;
+}
+
+.habilidade-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border: 1px solid var(--resultado-border);
+    border-radius: 8px;
+    font-family: "Google Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: default;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.habilidade-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(109, 42, 171, 0.35);
+}
+
+.habilidade-icon {
+    font-size: 1.2rem;
+}
+
 #resultado-quiz.front-end,
 #resultado-quiz.back-end,
 #resultado-quiz.full-stack {
