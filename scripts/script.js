@@ -11,7 +11,7 @@ btn.addEventListener('click', () => {
  
 const NOME = "Gabriel Alves Krull";
 let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
-let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e soluções que unem design e lógica.";
+let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
  
 let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
 let anoFormatura2 = 2026, mesFormatura2 = 9, diaFormatura2 = 15;
@@ -53,9 +53,10 @@ document.getElementById("formatura1").innerHTML = f1.dias > 0
     : "Já formei";
  
 // ── HABILIDADES ──
-const habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
+let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
+habilidades.push("Linux");
 const listaHabilidades = document.getElementById("lista-habilidades");
-const icones = { HTML:"code", CSS:"palette", JS:"javascript", Python:"terminal", SQL:"storage", Java:"coffee" };
+const icones = { HTML:"code", CSS:"palette", JS:"javascript", Python:"terminal", SQL:"storage", Java:"coffee", Linux:"laptop" };
  
 for (let i = 0; i < habilidades.length; i++) {
     const li = document.createElement("li");
@@ -66,52 +67,9 @@ for (let i = 0; i < habilidades.length; i++) {
     `;
     listaHabilidades.appendChild(li);
 }
+ 
 
-let nota = 8;
-let aprovado = (nota >= 6)? "Aprovado" : "Reprovado";
-
-/*document.write(`<p> Nota: ${nota} - ${aprovado} </p>`)*/
-
-let diaSemana = 4;
-
-switch (diaSemana){
-  case 1: "Domingo"; break;
-  case 2: "Segunda-feira"; break;
-  case 3: "Terça-feira"; break;
-  case 4: "Quarta-feira"; break;
-  case 5: "Quinta-feita"; break;
-  case 6: "Sexta-feira"; break;
-  case 7: "Sábado"; break;
-
-}
-
-// ─── HABILIDADES ──────────────────────────────────────────────
-const habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
-
-const listaHabilidades = document.getElementById("lista-habilidades");
-
-const icones = {
-  HTML:   "code",
-  CSS:    "palette",
-  JS:     "javascript",
-  Python: "terminal",
-  SQL:    "storage",
-  Java:   "coffee"
-};
-
-for (let i = 0; i < habilidades.length; i++) {
-  const li = document.createElement("li");
-  li.classList.add("habilidade-item");
-
-  li.innerHTML = `
-    <span class="material-icons habilidade-icon">${icones[habilidades[i]] ?? "star"}</span>
-    <span class="habilidade-nome">${habilidades[i]}</span>
-  `;
-
-  listaHabilidades.appendChild(li);
-}
-
-// ─── QUIZ DE PERFIL ───────────────────────────────────────────
+// ── QUIZ ──
 const btnVisual     = document.getElementById("btn-visual");
 const btnLogica     = document.getElementById("btn-logica");
 const resultadoQuiz = document.getElementById("resultado-quiz");
@@ -121,25 +79,53 @@ btnVisual.addEventListener("click", () => { pontosFront++; exibirPerfil(); });
 btnLogica.addEventListener("click", () => { pontosBack++;  exibirPerfil(); });
  
 function exibirPerfil() {
-  if (pontosFront > pontosBack) {
-    resultadoQuiz.classList.remove("back-end", "full-stack");
-    resultadoQuiz.classList.add("front-end");
-    resultadoQuiz.innerHTML = `<strong>🎨 Você tem perfil Front-End!</strong><br>
-      Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
-      Tecnologias pra você: HTML, CSS, React, Vue.`;
+    if (pontosFront > pontosBack) {
+        resultadoQuiz.className = "front-end";
+        resultadoQuiz.innerHTML = `<strong>🎨 Você tem perfil Front-End!</strong><br>
+            Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
+            Tecnologias pra você: HTML, CSS, React, Vue.`;
+    } else if (pontosBack > pontosFront) {
+        resultadoQuiz.className = "back-end";
+        resultadoQuiz.innerHTML = `<strong>⚙️ Você tem perfil Back-End!</strong><br>
+            Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
+            Tecnologias pra você: Node.js, Python, bancos de dados.`;
+    } else {
+        resultadoQuiz.className = "full-stack";
+        resultadoQuiz.innerHTML = `<strong>🔄 Você tem perfil Full Stack!</strong><br>
+            Você curte tanto o visual quanto a lógica — o melhor dos dois mundos.
+            Tecnologias pra você: HTML, CSS, Node.js, React, bancos de dados.`;
+    }
+}
 
-  } else if (pontosBack > pontosFront) {
-    resultadoQuiz.classList.remove("front-end", "full-stack");
-    resultadoQuiz.classList.add("back-end");
-    resultadoQuiz.innerHTML = `<strong>⚙️ Você tem perfil Back-End!</strong><br>
-      Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
-      Tecnologias pra você: Node.js, Python, bancos de dados.`;
+let projetos = [
+    {
+        nome : "Aplicação de Estacionamento",
+        tecnologias : ["Python, Tkinter, SQLite, fpdf2, datetime."],
+        conhecimentos : "VsCode, Git, GitHub, pip, PyInstaller.",
+        descricao : "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
+        link : "https://github.com/GabrielAlvesKrull/EstaciON"
+    },
 
-  } else {
-    resultadoQuiz.classList.remove("front-end", "back-end");
-    resultadoQuiz.classList.add("full-stack");
-    resultadoQuiz.innerHTML = `<strong>🔄 Você tem perfil Full Stack!</strong><br>
-      Você curte tanto o visual quanto a lógica — o melhor dos dois mundos.
-      Tecnologias pra você: HTML, CSS, Node.js, React, bancos de dados.`;
-  }
+    {
+        nome : "M&G Energia",
+        tecnologias : ["HTML, CSS, JS"],
+        conhecimentos : "VsCode, Git, GitHub",
+        descricao : "Site para uma empresa de energia, com HTML, CSS e JS.",
+        link : "https://github.com/GabrielAlvesKrull/M-G-Energia"
+    }
+]
+
+const listaProjetos = document.getElementById("lista-projetos");
+
+for (let i = 0; i < projetos.length; i++) {
+    const li = document.createElement("li");
+    li.classList.add("projeto-item");
+    li.innerHTML = `
+        <h3 id="projeto-nome">${projetos[i].nome}</h3>
+        <p id="projeto-tecnologias">Tecnologias: ${projetos[i].tecnologias}</p>
+        <p id="projeto-conhecimentos">Conhecimentos: ${projetos[i].conhecimentos}</p>
+        <p id="projeto-descricao">${projetos[i].descricao}</p>
+        <a href="${projetos[i].link}" target="_blank" class="projeto-link">Ver projeto</a>
+    `;
+    listaProjetos.appendChild(li);
 }
