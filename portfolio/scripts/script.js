@@ -1,101 +1,70 @@
 const btn = document.getElementById('modoClaroEscuro');
-        const html = document.documentElement;
-
-        btn.addEventListener('click', () => {
-            const isLight = html.getAttribute('data-theme') === 'light';
-         btn.innerHTML = isLight ? '<span class="material-icons">light_mode</span>'
-                        : '<span class="material-icons">dark_mode</span>';
-            html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-        });
-
+const html = document.documentElement;
+ 
+btn.addEventListener('click', () => {
+    const isLight = html.getAttribute('data-theme') === 'light';
+    btn.innerHTML = isLight
+        ? '<span class="material-icons">light_mode</span>'
+        : '<span class="material-icons">dark_mode</span>';
+    html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+});
+ 
 const NOME = "Gabriel Alves Krull";
-let tituloProfissional = "Estudante de Engenharia de Software" + " e " + "Técnico em Desenvolvimento de Sistemas";
-let minhaBio = "Estudante de Engenharia de Software"+ " e " +"Técnico em Desenvolvimento de Sistemas";
-
-//Variáveis de data da formatura
-let anoFormatura1 = 2030;
-let anoFormatura2 = 2026;
-let mesFormatura1 = 12;
-let mesFormatura2 = 3;
-let diaFormatura1 = 26;
-let diaFormatura2 = 15;
-
-//Variáveis de data da ingressão
-let anoIngresso1 = 2026;
-let anoIngresso2 = 2025;
-let mesIngresso1 = 8;
-let mesIngresso2 = 1;
-let diaIngresso1 = 26;
-let diaIngresso2 = 1;
-
-//Varáveis datas, usando a biblioteca Date
-let dataAtual = new Date(); //Data atual
-let mesAtual = dataAtual.getMonth() +1; //Mês atual (0-11, por isso +1)
-let anoAtual = dataAtual.getFullYear();// Ano atual
-let diaAtual = dataAtual.getDate();// Dia atual
-
-//Variáveis
-let indefinido;
-let nulo = null;
-let curso = {
-    nome: "Engenharia de Software",
-    semestre:1,
-    disciplinaAtual: "Design Responsivo"
-}
-
-console.log(typeof nulo);
-console.log(typeof indefinido);
-console.log(typeof anoFormatura1);
-console.log(typeof anoFormatura2);
-console.log(typeof anoIngresso1);
-console.log(typeof anoIngresso2);
-console.log(typeof minhaBio);
-console.log(typeof NOME);
-console.log(typeof curso);
-
+let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
+let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e soluções que unem design e lógica.";
+ 
+let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
+let anoFormatura2 = 2026, mesFormatura2 = 9, diaFormatura2 = 15;
+let anoIngresso1 = 2026, mesIngresso1 = 2, diaIngresso1 = 1;
+let anoIngresso2 = 2025, mesIngresso2 =2, diaIngresso2 = 10;
+ 
 document.getElementById("meuNome").innerText = NOME;
 document.getElementById("tituloProfissional").innerText = tituloProfissional;
 document.getElementById("minhaBio").innerText = minhaBio;
-document.getElementById("anoFormatura1").innerText = "Ano das Formaturas: "+ anoFormatura1 + " e " + anoFormatura2;
-
-document.getElementById("tempoRestanteFormaturas").innerText = `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
-
+document.getElementById("anoFormatura1").innerText = "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
+document.getElementById("tempoRestanteFormaturas").innerText =
+    `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
+ 
 function calcular(ano, mes, dia) {
-  const hoje = new Date();
-  hoje.setHours(0, 0, 0, 0);
-  const alvo = new Date(ano, mes - 1, dia);
-
-  const diffMs = alvo - hoje;
-  const dias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-
-  const anos  = Math.floor(Math.abs(dias) / 365);
-  const meses = Math.floor((Math.abs(dias) % 365) / 30);
-  const diasR = Math.abs(dias) % 30;
-
-  return { dias, anos, meses, diasR };
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+    const alvo = new Date(ano, mes - 1, dia);
+    const diffMs = alvo - hoje;
+    const dias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    const anos  = Math.floor(Math.abs(dias) / 365);
+    const meses = Math.floor((Math.abs(dias) % 365) / 30);
+    const diasR = Math.abs(dias) % 30;
+    return { dias, anos, meses, diasR };
 }
-
-const f1 = calcular(2030, 12, 26);
-const f2 = calcular(2026, 12, 15);
-const i1 = calcular(2026, 12, 26);
-const i2 = calcular(2025, 1, 1);
-
-
-
-document.getElementById("formatura2").innerHTML = 
-  `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
-
-document.getElementById("ingresso1").innerHTML = 
-  `Ingresso 1: ${i1.dias} dias (${i1.anos}a ${i1.meses}m ${i1.diasR}d)`;
-
-document.getElementById("ingresso2").innerHTML = 
-  `Ingresso 2: ${i2.dias} dias`;
-
-if (f1.dias > 0){
-  document.getElementById("formatura1").innerHTML = 
-  `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`;
-}else{
-  document.getElementById("formatura1").innerHTML = "Já formei"
+ 
+const f1 = calcular(anoFormatura1, mesFormatura1, diaFormatura1);
+const f2 = calcular(anoFormatura2, mesFormatura2, diaFormatura2);
+const i1 = calcular(anoIngresso1, mesIngresso1, diaIngresso1);
+const i2 = calcular(anoIngresso2, mesIngresso2, diaIngresso2);
+ 
+document.getElementById("formatura2").innerHTML =
+    `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
+document.getElementById("ingresso1").innerHTML =
+    `Ingresso 1: 01 de fevereiro de 2026`;
+document.getElementById("ingresso2").innerHTML =
+    `Ingresso 2: 10 de fevereiro de 2025`;
+document.getElementById("formatura1").innerHTML = f1.dias > 0
+    ? `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`
+    : "Já formei";
+ 
+// ── HABILIDADES ──
+const habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
+const listaHabilidades = document.getElementById("lista-habilidades");
+const icones = { HTML:"code", CSS:"palette", JS:"javascript", Python:"terminal", SQL:"storage", Java:"coffee" };
+ 
+for (let i = 0; i < habilidades.length; i++) {
+    const li = document.createElement("li");
+    li.classList.add("habilidade-item");
+    li.innerHTML = `
+        <span class="material-icons habilidade-icon">${icones[habilidades[i]] ?? "star"}</span>
+        <span class="habilidade-nome">${habilidades[i]}</span>
+    `;
+    listaHabilidades.appendChild(li);
 }
 
 let nota = 8;
@@ -146,20 +115,11 @@ for (let i = 0; i < habilidades.length; i++) {
 const btnVisual     = document.getElementById("btn-visual");
 const btnLogica     = document.getElementById("btn-logica");
 const resultadoQuiz = document.getElementById("resultado-quiz");
-
-let pontosFront = 0;
-let pontosBack  = 0;
-
-btnVisual.addEventListener("click", function() {
-  pontosFront++;
-  exibirPerfil();
-});
-
-btnLogica.addEventListener("click", function() {
-  pontosBack++;
-  exibirPerfil();
-});
-
+let pontosFront = 0, pontosBack = 0;
+ 
+btnVisual.addEventListener("click", () => { pontosFront++; exibirPerfil(); });
+btnLogica.addEventListener("click", () => { pontosBack++;  exibirPerfil(); });
+ 
 function exibirPerfil() {
   if (pontosFront > pontosBack) {
     resultadoQuiz.classList.remove("back-end", "full-stack");

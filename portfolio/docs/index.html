@@ -3,38 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Portifólio</title>
 </head>
 <body>
     <header>
-        <nav> 
+        <nav id="menu"> 
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="#menu">Home</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
-                <li>
-                    <button id="modoClaroEscuro">
+                <button id="modoClaroEscuro">
                         <span class="material-icons">light_mode</span>
-                    </button>
-                </li>
+                </button>
             </ul>
         </nav>
     </header>
     <main>
-       
         
-        </button>
-        <h1 id="meuNome"></h1>
-        <h2 id="tituloProfissional"></h2>
-        <p id="minhaBio"></p>
-        <p id="anoFormatura1"></p>
-        <p id="formatura1"></p>
-        <p id="formatura2"></p>
-        <p id="ingresso1"></p>
-        <p id="ingresso2"></p>
-        <p id="tempoRestanteFormaturas"></p>
+        <div id="hero">
+             <img id="foto-perfil" src="https://avatars.githubusercontent.com/u/201268549?v=4" alt="Foto de perfil">
+        
+        <div id="dados">
+            <h1 id="meuNome"></h1><br>
+            <h2 id="tituloProfissional"></h2>
+
+            <section id="habilidades">
+                <h2>Minhas Habilidades</h2>
+                <ul id="lista-habilidades"></ul>
+            </section>
+        </div>
+    </div>
+            
+            <div id="secao-bio">
+                <h2 class="subtitulo">Sobre mim</h2>
+                <p id="minhaBio"></p>
+            </div>
+
+            <div id="secao-datas">
+                <p id="anoFormatura1"></p>
+                <p id="formatura1"></p>
+                <p id="formatura2"></p>
+                <p id="ingresso1"></p>
+                <p id="ingresso2"></p>
+                <p id="tempoRestanteFormaturas"></p>
+            </div>
+
+            
 
         <section id="habilidades">
             <h2>Minhas Habilidades</h2>
@@ -45,13 +61,14 @@
             <h2>Descubra seu perfil dev</h2>
             <p>Você prefere trabalhar com...</p>
 
-        <button id="btn-visual">
-            <span class="material-icons">palette</span> Visual e design
-        </button>
-
-        <button id="btn-logica">
-            <span class="material-icons">settings</span> Lógica e dados
-        </button>
+        <div id="quiz-botoes">
+            <button id="btn-visual">
+                <span class="material-icons">palette</span> Visual e design
+            </button>
+            <button id="btn-logica">
+                <span class="material-icons">settings</span> Lógica e dados
+            </button>
+        </div>
 
             <div id="resultado-quiz"></div>
         </section>
