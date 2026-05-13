@@ -103,7 +103,7 @@ let projetos = [
         tecnologias : ["Python, Tkinter, SQLite, fpdf2, datetime."],
         conhecimentos : "VsCode, Git, GitHub, pip, PyInstaller.",
         descricao : "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
-        link : "https://github.com/GabrielAlvesKrull/EstaciON"
+        link : "https://github.com/GabrielKrull/EstaciON"
     },
 
     {
@@ -111,7 +111,23 @@ let projetos = [
         tecnologias : ["HTML, CSS, JS"],
         conhecimentos : "VsCode, Git, GitHub",
         descricao : "Site para uma empresa de energia, com HTML, CSS e JS.",
-        link : "https://github.com/GabrielAlvesKrull/M-G-Energia"
+        link : "https://github.com/GabrielKrull/M-G-Energia"
+    },
+    
+    {
+        nome : "Sistema de catalogar filmes, seriados e livros",
+        tecnologias : ["Python, Random e Sys"],
+        conhecimentos : "VsCode, Modularização, Hieraquia",
+        descricao : "Sistema para catalogar filmes, seriados e livros, com Python, Random e Sys.",
+        link : "https://github.com/GabrielKrull/sistemadefilmeserielivro"
+    },
+    
+    {
+        nome : "Qualidade de Software",
+        tecnologias : ["HTML, CSS, JS"],
+        conhecimentos : "VsCode, Git, GitHub, QA e Testes",
+        descricao : "Site simples para testes de qualidade de software, com HTML, CSS e JS.",
+        link : "https://github.com/GabrielKrull/Trabalho-Qualidade-de-software"
     }
 ]
 
@@ -121,10 +137,10 @@ for (let i = 0; i < projetos.length; i++) {
     const li = document.createElement("li");
     li.classList.add("projeto-item");
     li.innerHTML = `
-        <h3 id="projeto-nome">${projetos[i].nome}</h3>
-        <p id="projeto-tecnologias">Tecnologias: ${projetos[i].tecnologias}</p>
-        <p id="projeto-conhecimentos">Conhecimentos: ${projetos[i].conhecimentos}</p>
-        <p id="projeto-descricao">${projetos[i].descricao}</p>
+        <h3 class="projeto-nome">${projetos[i].nome}</h3>
+        <p class="projeto-tecnologias"><span class="projeto-label">Tecnologias:</span> ${projetos[i].tecnologias}</p>
+        <p class="projeto-conhecimentos"><span class="projeto-label">Ferramentas:</span> ${projetos[i].conhecimentos}</p>
+        <p class="projeto-descricao">${projetos[i].descricao}</p>
         <a href="${projetos[i].link}" target="_blank" class="projeto-link">Ver projeto</a>
     `;
     listaProjetos.appendChild(li);
