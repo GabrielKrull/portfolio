@@ -157,7 +157,7 @@ Quer trocar uma ideia, propor uma colaboração ou só bater um papo sobre tecno
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,100:6C63FF&height=120&section=footer&animation=fadeIn"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7703fc,100:a14fff&height=120&section=footer&animation=fadeIn"/>
 
 *Feito por Gabriel Alves Krull*
 
