@@ -8,22 +8,27 @@ btn.addEventListener('click', () => {
         : '<span class="material-icons">dark_mode</span>';
     html.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
- 
-const NOME = "Gabriel Alves Krull";
-let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
-let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
+
+function carregarDados(){
+    const NOME = "Gabriel Alves Krull";
+    let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
+    let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
+
+    document.getElementById("meuNome").innerText = NOME;
+    document.getElementById("tituloProfissional").innerText = tituloProfissional;
+    document.getElementById("minhaBio").innerText = minhaBio;
+}
  
 let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
 let anoFormatura2 = 2026, mesFormatura2 = 9, diaFormatura2 = 15;
 let anoIngresso1 = 2026, mesIngresso1 = 2, diaIngresso1 = 1;
 let anoIngresso2 = 2025, mesIngresso2 =2, diaIngresso2 = 10;
- 
-document.getElementById("meuNome").innerText = NOME;
-document.getElementById("tituloProfissional").innerText = tituloProfissional;
-document.getElementById("minhaBio").innerText = minhaBio;
-document.getElementById("anoFormatura1").innerText = "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
-document.getElementById("tempoRestanteFormaturas").innerText =
+
+function carregarData(){
+    document.getElementById("anoFormatura1").innerText = "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
+    document.getElementById("tempoRestanteFormaturas").innerText =
     `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
+}
  
 function calcular(ano, mes, dia) {
     const hoje = new Date();
@@ -42,15 +47,17 @@ const f2 = calcular(anoFormatura2, mesFormatura2, diaFormatura2);
 const i1 = calcular(anoIngresso1, mesIngresso1, diaIngresso1);
 const i2 = calcular(anoIngresso2, mesIngresso2, diaIngresso2);
  
-document.getElementById("formatura2").innerHTML =
+function carregarDuração(){
+    document.getElementById("formatura2").innerHTML =
     `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
-document.getElementById("ingresso1").innerHTML =
-    `Ingresso 1: 01 de fevereiro de 2026`;
-document.getElementById("ingresso2").innerHTML =
-    `Ingresso 2: 10 de fevereiro de 2025`;
-document.getElementById("formatura1").innerHTML = f1.dias > 0
-    ? `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`
-    : "Já formei";
+    document.getElementById("ingresso1").innerHTML =
+        `Ingresso 1: 01 de fevereiro de 2026`;
+    document.getElementById("ingresso2").innerHTML =
+        `Ingresso 2: 10 de fevereiro de 2025`;
+    document.getElementById("formatura1").innerHTML = f1.dias > 0
+        ? `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`
+        : "Já formei";
+}
  
 // ── HABILIDADES ──
 let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
@@ -99,7 +106,7 @@ function exibirPerfil() {
 
 let projetos = [
     {
-        nome : "Aplicação de Estacionamento",
+        nome : "EstaciON",
         tecnologias : ["Python, Tkinter, SQLite, fpdf2, datetime."],
         conhecimentos : "VsCode, Git, GitHub, pip, PyInstaller.",
         descricao : "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",

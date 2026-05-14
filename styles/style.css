@@ -18,12 +18,12 @@
     --bg-color: linear-gradient(-160deg, #e8f4fd 10%, #ceadf89e 100%);
     --text-color: #2a1a2e;
     --biotext-color: #d7b2fa31;
-    --btn-bg: #a0dbfd52;
+    --btn-bg: #d5a0fd52;
     --btn-color: #6d2aab;
     --btn-border: #6d2aab;
-    --resultado-bg: #ddeeff;
+    --resultado-bg: #f0ddff;
     --resultado-color: #1a1a2e;
-    --resultado-border: #6d2aab;
+    --resultado-border: #6d2aab53;
 }
  
 [data-theme="light"] #resultado-quiz.front-end {
@@ -148,7 +148,7 @@ main {
     border: 1px solid var(--resultado-border);
     border-radius: 12px;
     padding: 40px;
-    box-shadow: 0 0 40px rgba(91, 71, 110, 0.4);
+    box-shadow: 0 0 40px rgba(78, 59, 95, 0.4);
 }
  
 #meuNome {
@@ -209,7 +209,7 @@ main {
 }
 
 .subtitulo{
-    font-size: 1.3rem;
+    font-size: 2rem;
     font-weight: 700;
     color: var(--text-color);
 }
@@ -223,20 +223,19 @@ main {
 }
  
 #minhaBio {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     line-height: 1.6;
-    opacity: 0.9;
 }
  
 #secao-datas {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    
+    font-size: 1.5rem; 
 }
 
 secao-datas p{
-    font-size: 1.1rem; 
+
     font-weight: 700;
     color: var(--text-color);
 }
@@ -250,12 +249,12 @@ secao-datas p{
 }
  
 #quiz h2 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 700;
 }
  
 #quiz > p {
-    opacity: 0.85;
+    font-size: 1.5rem;
 }
  
 .quiz-botoes {
@@ -400,7 +399,7 @@ button {
     border: 1px solid var(--resultado-border);
     border-radius: 12px;
     font-family: "Google Sans", sans-serif;
-    font-size: 1rem;
+    font-size: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -410,7 +409,7 @@ button {
 }
 
 .projeto-nome {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-color);
     margin: 0;
