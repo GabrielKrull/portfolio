@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6C63FF,100:00D4FF&height=200&section=header&text=Gabriel%20Alves%20Krull&fontSize=45&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Desenvolvedor%20Full-Stack%20%7C%20Design%20é%20arte%2C%20codar%20também&descAlignY=55&descSize=16" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6C63FF,100:00D4FF&height=200&section=header&text=Gabriel%20Alves%20Krull&fontSize=45&fontColor=fff&animation=fadeIn&fontAlignY=38&desc=Desenvolvedor%20Full-Stack%20%7C%20design%20é%20arte%2C%20codar%20também&descAlignY=55&descSize=16" />
 
 </div>
 
@@ -101,12 +101,26 @@ Cards de projetos carregados via script, fáceis de atualizar sem mexer no HTML.
 
 ---
 
-## 📈 Estatísticas do GitHub
+## 🧠 Habilidades & Tecnologias
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=GabrielKrull&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/>
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=GabrielKrull&layout=compact&langs_count=7&theme=tokyonight"/>
+### 🎨 Front-End
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+
+### ⚙️ Back-End & Banco de Dados
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
+
+### 🛠️ Ferramentas & Versionamento
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS%20Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 
 </div>
 
@@ -146,6 +160,6 @@ Quer trocar uma ideia, propor uma colaboração ou só bater um papo sobre tecno
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00D4FF,100:6C63FF&height=120&section=footer&animation=fadeIn"/>
 
-*Feito por Gabriel Alves Krull*
+*Feito com ❤️ e muito ☕ por Gabriel Alves Krull*
 
 </div>
