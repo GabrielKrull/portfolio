@@ -152,3 +152,37 @@ for (let i = 0; i < projetos.length; i++) {
     `;
     listaProjetos.appendChild(li);
 }
+
+
+
+// ── VISITANTE ──
+const inputNome = document.getElementById("inputNome");
+const btnEnviar = document.getElementById("btnEnviar");
+const saudacaoVisitante = document.getElementById("saudacao-visitante");
+ 
+function mostrarSaudacao() {
+    const nome = inputNome.value.trim();
+    if (!nome) {
+        inputNome.classList.add("input-erro");
+        setTimeout(() => inputNome.classList.remove("input-erro"), 600);
+        return;
+    }
+    const hora = new Date().getHours();
+    const periodo = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
+    saudacaoVisitante.innerHTML = `
+        <span class="material-icons saudacao-icon">waving_hand</span>
+        <span>${periodo}, <strong>${nome}</strong>! Seja bem-vindo(a) ao meu portfólio. Espero que goste do que encontrar por aqui!</span>
+    `;
+    saudacaoVisitante.classList.add("visivel");
+    inputNome.value = "";
+    inputNome.focus();
+}
+ 
+inputNome.addEventListener("input", () => {
+    inputNome.value = inputNome.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, "");
+});
+ 
+btnEnviar.addEventListener("click", mostrarSaudacao);
+inputNome.addEventListener("keydown", e => {
+    if (e.key === "Enter") mostrarSaudacao();
+});
