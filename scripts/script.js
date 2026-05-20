@@ -1,6 +1,7 @@
+// ── TEMA ──
 const btn = document.getElementById('modoClaroEscuro');
 const html = document.documentElement;
- 
+
 btn.addEventListener('click', () => {
     const isLight = html.getAttribute('data-theme') === 'light';
     btn.innerHTML = isLight
@@ -9,7 +10,8 @@ btn.addEventListener('click', () => {
     html.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
 
-function carregarDados(){
+// ── DADOS PESSOAIS ──
+function carregarDados() {
     const NOME = "Gabriel Alves Krull";
     let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
     let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
@@ -18,38 +20,40 @@ function carregarDados(){
     document.getElementById("tituloProfissional").innerText = tituloProfissional;
     document.getElementById("minhaBio").innerText = minhaBio;
 }
- 
-let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
-let anoFormatura2 = 2026, mesFormatura2 = 9, diaFormatura2 = 15;
-let anoIngresso1 = 2026, mesIngresso1 = 2, diaIngresso1 = 1;
-let anoIngresso2 = 2025, mesIngresso2 =2, diaIngresso2 = 10;
 
-function carregarData(){
-    document.getElementById("anoFormatura1").innerText = "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
+// ── DATAS ──
+let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
+let anoFormatura2 = 2026, mesFormatura2 = 9,  diaFormatura2 = 15;
+let anoIngresso1  = 2026, mesIngresso1  = 2,  diaIngresso1  = 1;
+let anoIngresso2  = 2025, mesIngresso2  = 2,  diaIngresso2  = 10;
+
+function carregarData() {
+    document.getElementById("anoFormatura1").innerText =
+        "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
     document.getElementById("tempoRestanteFormaturas").innerText =
-    `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
+        `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
 }
- 
+
 function calcular(ano, mes, dia) {
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
-    const alvo = new Date(ano, mes - 1, dia);
+    const alvo   = new Date(ano, mes - 1, dia);
     const diffMs = alvo - hoje;
-    const dias = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-    const anos  = Math.floor(Math.abs(dias) / 365);
-    const meses = Math.floor((Math.abs(dias) % 365) / 30);
-    const diasR = Math.abs(dias) % 30;
+    const dias   = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+    const anos   = Math.floor(Math.abs(dias) / 365);
+    const meses  = Math.floor((Math.abs(dias) % 365) / 30);
+    const diasR  = Math.abs(dias) % 30;
     return { dias, anos, meses, diasR };
 }
- 
+
 const f1 = calcular(anoFormatura1, mesFormatura1, diaFormatura1);
 const f2 = calcular(anoFormatura2, mesFormatura2, diaFormatura2);
-const i1 = calcular(anoIngresso1, mesIngresso1, diaIngresso1);
-const i2 = calcular(anoIngresso2, mesIngresso2, diaIngresso2);
- 
-function carregarDuração(){
+const i1 = calcular(anoIngresso1,  mesIngresso1,  diaIngresso1);
+const i2 = calcular(anoIngresso2,  mesIngresso2,  diaIngresso2);
+
+function carregarDuração() {
     document.getElementById("formatura2").innerHTML =
-    `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
+        `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
     document.getElementById("ingresso1").innerHTML =
         `Ingresso 1: 01 de fevereiro de 2026`;
     document.getElementById("ingresso2").innerHTML =
@@ -58,13 +62,16 @@ function carregarDuração(){
         ? `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`
         : "Já formei";
 }
- 
+
 // ── HABILIDADES ──
 let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
 habilidades.push("Linux");
 const listaHabilidades = document.getElementById("lista-habilidades");
-const icones = { HTML:"code", CSS:"palette", JS:"javascript", Python:"terminal", SQL:"storage", Java:"coffee", Linux:"laptop" };
- 
+const icones = {
+    HTML:"code", CSS:"palette", JS:"javascript",
+    Python:"terminal", SQL:"storage", Java:"coffee", Linux:"laptop"
+};
+
 for (let i = 0; i < habilidades.length; i++) {
     const li = document.createElement("li");
     li.classList.add("habilidade-item");
@@ -74,17 +81,16 @@ for (let i = 0; i < habilidades.length; i++) {
     `;
     listaHabilidades.appendChild(li);
 }
- 
 
 // ── QUIZ ──
 const btnVisual     = document.getElementById("btn-visual");
 const btnLogica     = document.getElementById("btn-logica");
 const resultadoQuiz = document.getElementById("resultado-quiz");
 let pontosFront = 0, pontosBack = 0;
- 
+
 btnVisual.addEventListener("click", () => { pontosFront++; exibirPerfil(); });
 btnLogica.addEventListener("click", () => { pontosBack++;  exibirPerfil(); });
- 
+
 function exibirPerfil() {
     if (pontosFront > pontosBack) {
         resultadoQuiz.className = "front-end";
@@ -104,39 +110,37 @@ function exibirPerfil() {
     }
 }
 
+// ── PROJETOS ──
 let projetos = [
     {
-        nome : "EstaciON",
-        tecnologias : ["Python, Tkinter, SQLite, fpdf2, datetime."],
-        conhecimentos : "VsCode, Git, GitHub, pip, PyInstaller.",
-        descricao : "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
-        link : "https://github.com/GabrielKrull/EstaciON"
+        nome: "EstaciON",
+        tecnologias: ["Python, Tkinter, SQLite, fpdf2, datetime."],
+        conhecimentos: "VsCode, Git, GitHub, pip, PyInstaller.",
+        descricao: "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
+        link: "https://github.com/GabrielKrull/EstaciON"
     },
-
     {
-        nome : "M&G Energia",
-        tecnologias : ["HTML, CSS, JS"],
-        conhecimentos : "VsCode, Git, GitHub",
-        descricao : "Site para uma empresa de energia, com HTML, CSS e JS.",
-        link : "https://github.com/GabrielKrull/M-G-Energia"
+        nome: "M&G Energia",
+        tecnologias: ["HTML, CSS, JS"],
+        conhecimentos: "VsCode, Git, GitHub",
+        descricao: "Site para uma empresa de energia, com HTML, CSS e JS.",
+        link: "https://github.com/GabrielKrull/M-G-Energia"
     },
-    
     {
-        nome : "Sistema de catalogar filmes, seriados e livros",
-        tecnologias : ["Python, Random e Sys"],
-        conhecimentos : "VsCode, Modularização, Hieraquia",
-        descricao : "Sistema para catalogar filmes, seriados e livros, com Python, Random e Sys.",
-        link : "https://github.com/GabrielKrull/sistemadefilmeserielivro"
+        nome: "Sistema de catalogar filmes, seriados e livros",
+        tecnologias: ["Python, Random e Sys"],
+        conhecimentos: "VsCode, Modularização, Hieraquia",
+        descricao: "Sistema para catalogar filmes, seriados e livros, com Python, Random e Sys.",
+        link: "https://github.com/GabrielKrull/sistemadefilmeserielivro"
     },
-    
     {
-        nome : "Qualidade de Software",
-        tecnologias : ["HTML, CSS, JS"],
-        conhecimentos : "VsCode, Git, GitHub, QA e Testes",
-        descricao : "Site simples para testes de qualidade de software, com HTML, CSS e JS.",
-        link : "https://github.com/GabrielKrull/Trabalho-Qualidade-de-software"
+        nome: "Qualidade de Software",
+        tecnologias: ["HTML, CSS, JS"],
+        conhecimentos: "VsCode, Git, GitHub, QA e Testes",
+        descricao: "Site simples para testes de qualidade de software, com HTML, CSS e JS.",
+        link: "https://github.com/GabrielKrull/Trabalho-Qualidade-de-software"
     }
-]
+];
 
 const listaProjetos = document.getElementById("lista-projetos");
 
@@ -153,13 +157,11 @@ for (let i = 0; i < projetos.length; i++) {
     listaProjetos.appendChild(li);
 }
 
-
-
 // ── VISITANTE ──
-const inputNome = document.getElementById("inputNome");
-const btnEnviar = document.getElementById("btnEnviar");
+const inputNome         = document.getElementById("inputNome");
+const btnEnviar         = document.getElementById("btnEnviar");
 const saudacaoVisitante = document.getElementById("saudacao-visitante");
- 
+
 function mostrarSaudacao() {
     const nome = inputNome.value.trim();
     if (!nome) {
@@ -167,7 +169,7 @@ function mostrarSaudacao() {
         setTimeout(() => inputNome.classList.remove("input-erro"), 600);
         return;
     }
-    const hora = new Date().getHours();
+    const hora    = new Date().getHours();
     const periodo = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
     saudacaoVisitante.innerHTML = `
         <span class="material-icons saudacao-icon">waving_hand</span>
@@ -177,12 +179,105 @@ function mostrarSaudacao() {
     inputNome.value = "";
     inputNome.focus();
 }
- 
+
 inputNome.addEventListener("input", () => {
     inputNome.value = inputNome.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, "");
 });
- 
 btnEnviar.addEventListener("click", mostrarSaudacao);
 inputNome.addEventListener("keydown", e => {
     if (e.key === "Enter") mostrarSaudacao();
 });
+
+// ── POKÉMON ──
+const inputNomePoke = document.getElementById("inputNomePoke");
+const btnEnviarPoke = document.getElementById("btnEnviarPoke");
+const mostrarPoke   = document.getElementById("mostrarPoke");
+
+async function buscarPokemon() {
+    const nome = inputNomePoke.value.trim().toLowerCase();
+
+    if (!nome) {
+        inputNomePoke.classList.add("input-erro");
+        setTimeout(() => inputNomePoke.classList.remove("input-erro"), 600);
+        return;
+    }
+
+    const dados = await buscarAPI(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+
+    if (dados) {
+        const nomePokemon = dados.name;
+        const tipo        = dados.types[0].type.name;
+        const habilidade  = dados.abilities[1]?.ability.name ?? dados.abilities[0].ability.name;
+        const imagem      = dados.sprites.front_default;
+
+        mostrarPoke.innerHTML = `
+    
+            <span>O pokémon <strong>${nomePokemon}</strong> tem o tipo <strong>${tipo}</strong>
+            e a habilidade <strong>${habilidade}</strong>.</span> <p>Aqui está uma imagem dele:</p>
+            <img src="${imagem}" alt="${nomePokemon}" style="image-rendering:pixelated; width:96px; height:96px;"/>
+        `;
+        mostrarPoke.classList.add("visivel");
+        inputNomePoke.value = "";
+        inputNomePoke.focus();
+    } else {
+        mostrarPoke.innerHTML = `<span>Pokémon não encontrado. Verifique o nome e tente novamente.</span>`;
+        mostrarPoke.classList.add("visivel");
+    }
+}
+
+inputNomePoke.addEventListener("input", () => {
+    inputNomePoke.value = inputNomePoke.value.replace(/[^a-zA-ZÀ-ÿ\s\-]/g, "");
+});
+btnEnviarPoke.addEventListener("click", buscarPokemon);
+inputNomePoke.addEventListener("keydown", e => {
+    if (e.key === "Enter") buscarPokemon();
+});
+
+//SCROLL 
+function initScrollReveal() {
+    const fotoPerfil = document.getElementById("foto-perfil");
+    const dados      = document.getElementById("dados");
+    if (fotoPerfil) fotoPerfil.classList.add("reveal-left");
+    if (dados)      dados.classList.add("reveal-right");
+
+    const secaoVisitante = document.getElementById("secao-visitante");
+    if (secaoVisitante) secaoVisitante.classList.add("reveal");
+
+    const secaoBio = document.getElementById("secao-bio");
+    if (secaoBio) secaoBio.classList.add("reveal-left");
+
+    const secaoDatas = document.getElementById("secao-datas");
+    if (secaoDatas) secaoDatas.classList.add("reveal");
+
+    const quiz = document.getElementById("quiz");
+    if (quiz) quiz.classList.add("reveal");
+
+    const secaoProjetos = document.getElementById("secao-projetos");
+    if (secaoProjetos) {
+        const titulo = secaoProjetos.querySelector(".subtitulo");
+        if (titulo) titulo.classList.add("reveal");
+    }
+
+    const listaHab  = document.getElementById("lista-habilidades");
+    if (listaHab)  listaHab.classList.add("reveal-stagger");
+
+    const listaProj = document.getElementById("lista-projetos");
+    if (listaProj) listaProj.classList.add("reveal-stagger");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visivel-scroll");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+    });
+
+    document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-stagger")
+        .forEach(el => observer.observe(el));
+}
+
+window.addEventListener("load", initScrollReveal);

@@ -11,7 +11,7 @@
     <header>
         <nav id="menu"> 
             <ul>
-                <li><a href="#menu">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 <li><a href="#">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
                 <button id="modoClaroEscuro">
@@ -20,9 +20,9 @@
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="home">
         
-        <div id="hero">
+        <div id="hero"> 
              <img id="foto-perfil" src="https://avatars.githubusercontent.com/u/201268549?v=4" alt="Foto de perfil">
         
         <div id="dados">
@@ -45,7 +45,18 @@
                         <span class="material-icons">send</span> Enviar
                     </button>
                 </div>
-        <div id="saudacao-visitante"></div>
+                <div id="saudacao-visitante"></div>
+
+                    <h2 class="subtitulo">Qual seu Pokémon favorito?</h2>
+            <p id="visitante-descricao">Eu te mostro uma imagem dele.</p>
+                <div id="visitante-form">
+                    <input type="text" id="inputNomePoke" placeholder="Digite o nome do pokemon..." maxlength="50" autocomplete="off">
+                    <button id="btnEnviarPoke">
+                        <span class="material-icons">send</span> Enviar
+                    </button>
+                </div>
+        <div id="mostrarPoke"></div>
+        
         </section>
 
             
@@ -88,5 +99,6 @@
     </main>
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/async.js"></script>
 </body>
 </html>
