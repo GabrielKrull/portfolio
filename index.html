@@ -9,16 +9,24 @@
 </head>
 <body onload="carregarDados(), carregarData(),carregarDuração()">
     <header>
-        <nav id="menu"> 
+        <button id="modoClaroEscuro" aria-label="Alternar tema">
+            <span class="material-icons">light_mode</span>
+        </button>
+
+        <nav id="menu">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-                <button id="modoClaroEscuro">
-                        <span class="material-icons">light_mode</span>
-                </button>
+                <li><a href="#">Home</a></li>
+                <li><a href="#secao-bio">Sobre</a></li>
+                <li><a href="#secao-projetos">Projetos</a></li>
+                <li><a href="#secao-visitante">Contato</a></li>
             </ul>
         </nav>
+
+        <button id="menu-burger" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
     <main id="home">
         
@@ -38,7 +46,7 @@
 
         <section id="secao-visitante">
             <h2 class="subtitulo">Quem está visitando?</h2>
-            <p id="visitante-descricao">Deixa eu te receber como merece 👋</p>
+            <p id="visitante-descricao">Deixa eu te receber como merece</p>
                 <div id="visitante-form">
                     <input type="text" id="inputNome" placeholder="Digite seu nome..." maxlength="50" autocomplete="off">
                     <button id="btnEnviar">

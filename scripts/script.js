@@ -10,6 +10,28 @@ btn.addEventListener('click', () => {
     html.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
 
+const menuBurger = document.getElementById("menu-burger");
+const menu = document.getElementById("menu");
+
+menuBurger.addEventListener("click", () => {
+    menuBurger.classList.toggle("active");
+    menu.classList.toggle("visivel");
+});
+
+menu.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        menuBurger.classList.remove("active");
+
+        menu.classList.remove("visivel");
+
+    });
+
+});
+
+
+
 // ── DADOS PESSOAIS ──
 function carregarDados() {
     const NOME = "Gabriel Alves Krull";

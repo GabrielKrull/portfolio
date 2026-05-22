@@ -70,9 +70,43 @@ header {
     z-index: 1000;
     backdrop-filter: blur(10px);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 10px 24px;
+}
+
+/* Burger: escondido no desktop */
+#menu-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 1100;
+}
+
+#menu-burger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#menu-burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu-burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+#menu-burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
 }
  
 nav ul {
@@ -92,7 +126,7 @@ nav ul {
     transition: transform 0.2s ease;
 }
  
-a {
+nav a {
     text-decoration: none;
     color: var(--text-color);
     font-family: "Google Sans", sans-serif;
@@ -101,11 +135,11 @@ a {
     padding: 10px 18px;
     border-radius: 7px;
     display: inline-block;
-    transition: background-color 0.25s ease, transform 0.2s ease, color 0.25s ease;
+    transition: background-color 0.25s ease, transform 0.2s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
- 
-a:hover {
-    background-color: var(--biotext-color);
+
+nav a:hover {
+    background-color: rgba(109, 42, 171, 0.18);
     color: var(--btn-color);
     border: 1px solid var(--resultado-border);
     transform: translateY(-2px);
@@ -663,6 +697,7 @@ button {
 .reveal-stagger.visivel-scroll > *:nth-child(8)  { opacity: 1; transform: translateY(0); transition-delay: 0.54s; }
 
 @media (max-width: 1220px) {
+
     main {
         padding: 24px 20px;
         gap: 32px;
@@ -699,11 +734,64 @@ button {
     }
 
     #modoClaroEscuro {
-        margin-top: 4px;
+        z-index: 1100;
+        position: relative;
     }
- 
-    a {
-        font-size: 1.1rem;
-        padding: 8px 12px;
+}
+
+/* ── MOBILE (hamburger) ── */
+@media (max-width: 862px) {
+
+    /* Mostra o burger */
+    #menu-burger {
+        display: flex;
+    }
+
+    /* Esconde o nav por padrão no mobile */
+    #menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(160deg, #281a2e 0%, #1f1a36 100%);
+        border: 1px solid var(--resultado-border);
+        border-radius: 0 0 50px 50px;
+        z-index: 1000;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Quando .visivel é adicionado pelo JS */
+    #menu.visivel {
+        display: flex;
+    }
+    
+
+    nav ul {
+        flex-direction: column;
+        gap: 28px;
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    nav ul li a {
+        font-size: 1.8rem;
+    }
+
+    /* Hover dos links no menu mobile */
+    nav ul li a:hover {
+        background-color: rgba(109, 42, 171, 0.25);
+        color: var(--btn-color);
+        border: 1px solid var(--resultado-border);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(109, 42, 171, 0.35);
+    }
+
+    /* Botão tema fica visível no canto mesmo no mobile */
+    #modoClaroEscuro {
+        z-index: 1100;
+        position: relative;
     }
 }
