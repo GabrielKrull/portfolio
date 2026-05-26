@@ -247,6 +247,15 @@ main {
     font-weight: 700;
     color: var(--text-color);
 }
+
+.subtitulo{
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
  
 /* ── BIO E DATAS ── */
 #secao-bio {
@@ -685,6 +694,23 @@ button {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#secao-contato{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+
+.redes{
+    display: flex;
+    gap: 16px;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
 }
 
 .reveal-stagger.visivel-scroll > *:nth-child(1)  { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }
