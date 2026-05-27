@@ -252,9 +252,6 @@ main {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-color);
-    align-items: center;
-    justify-content: center;
-    text-align: center;
 }
  
 /* ── BIO E DATAS ── */
