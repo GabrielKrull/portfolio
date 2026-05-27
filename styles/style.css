@@ -448,7 +448,6 @@ button {
 
 .projeto-item:hover {
     transform: translateY(-4px);
-    transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(109, 42, 171, 0.3);
 }
 
@@ -502,7 +501,7 @@ button {
     box-shadow: 0 6px 18px rgba(109, 42, 171, 0.35);
     background-color: var(--btn-bg);
     color: var(--btn-color);
-    border-color: var(--resultado-border);
+    border-color: var(--btn-color);
 }
 /* ── VISITANTE ── */
 #secao-visitante {
@@ -703,14 +702,43 @@ button {
     align-items: center;
 }
 
-.redes{
+.redes {
     display: flex;
-    gap: 16px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.logo{
+.rede-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 24px;
+    background-color: var(--biotext-color);
+    border: 1px solid var(--resultado-border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    min-width: 90px;
+}
+
+.rede-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(109, 42, 171, 0.4);
+    border-color: var(--btn-color);
+}
+
+.logo {
     width: 40px;
     height: 40px;
+}
+
+.rede-label {
+    font-family: "Google Sans", sans-serif;
 }
 
 .reveal-stagger.visivel-scroll > *:nth-child(1)  { opacity: 1; transform: translateY(0); transition-delay: 0.05s; }

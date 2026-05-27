@@ -1,7 +1,12 @@
-// ── TEMA ──
+// ═══════════════════════════════════════════════
+// TEMA CLARO / ESCURO
+// ═══════════════════════════════════════════════
+
 const btn = document.getElementById('modoClaroEscuro');
 const html = document.documentElement;
 
+// Quando o botão de tema é clicado, troca entre o modo claro e escuro
+// e atualiza o ícone do botão para refletir o tema atual
 btn.addEventListener('click', () => {
     const isLight = html.getAttribute('data-theme') === 'light';
     btn.innerHTML = isLight
@@ -10,29 +15,34 @@ btn.addEventListener('click', () => {
     html.setAttribute('data-theme', isLight ? 'dark' : 'light');
 });
 
+
+// ═══════════════════════════════════════════════
+// MENU HAMBÚRGUER (mobile)
+// ═══════════════════════════════════════════════
+
 const menuBurger = document.getElementById("menu-burger");
 const menu = document.getElementById("menu");
 
+// Quando o ícone de menu é clicado, abre ou fecha o menu de navegação
 menuBurger.addEventListener("click", () => {
     menuBurger.classList.toggle("active");
     menu.classList.toggle("visivel");
 });
 
+// Quando o usuário clica em qualquer link do menu, o menu fecha automaticamente
 menu.querySelectorAll("a").forEach(link => {
-
     link.addEventListener("click", () => {
-
         menuBurger.classList.remove("active");
-
         menu.classList.remove("visivel");
-
     });
-
 });
 
 
+// ═══════════════════════════════════════════════
+// DADOS PESSOAIS
+// ═══════════════════════════════════════════════
 
-// ── DADOS PESSOAIS ──
+// Preenche na página o nome, título profissional e bio
 function carregarDados() {
     const NOME = "Gabriel Alves Krull";
     let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
@@ -43,12 +53,18 @@ function carregarDados() {
     document.getElementById("minhaBio").innerText = minhaBio;
 }
 
-// ── DATAS ──
+
+// ═══════════════════════════════════════════════
+// DATAS DE INGRESSO E FORMATURA
+// ═══════════════════════════════════════════════
+
+// Datas das formaturas e ingressão nos cursos
 let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
 let anoFormatura2 = 2026, mesFormatura2 = 9,  diaFormatura2 = 15;
 let anoIngresso1  = 2026, mesIngresso1  = 2,  diaIngresso1  = 1;
 let anoIngresso2  = 2025, mesIngresso2  = 2,  diaIngresso2  = 10;
 
+// Exibe na página os anos de formatura e quantos anos faltam para cada curso
 function carregarData() {
     document.getElementById("anoFormatura1").innerText =
         "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
@@ -56,6 +72,8 @@ function carregarData() {
         `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
 }
 
+// Recebe uma data e calcula a diferença entre hoje e essa data,
+// retornando o resultado em dias, meses e anos
 function calcular(ano, mes, dia) {
     const hoje = new Date();
     hoje.setHours(0, 0, 0, 0);
@@ -68,11 +86,14 @@ function calcular(ano, mes, dia) {
     return { dias, anos, meses, diasR };
 }
 
+// Calcula o tempo restante para cada formatura e ingresso
 const f1 = calcular(anoFormatura1, mesFormatura1, diaFormatura1);
 const f2 = calcular(anoFormatura2, mesFormatura2, diaFormatura2);
 const i1 = calcular(anoIngresso1,  mesIngresso1,  diaIngresso1);
 const i2 = calcular(anoIngresso2,  mesIngresso2,  diaIngresso2);
 
+// Exibe na página as datas de ingresso e o tempo restante para as formaturas.
+// Se a Formatura 1 já passou, exibe "Já formei" no lugar
 function carregarDuração() {
     document.getElementById("formatura2").innerHTML =
         `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
@@ -85,15 +106,25 @@ function carregarDuração() {
         : "Já formei";
 }
 
-// ── HABILIDADES ──
+
+// ═══════════════════════════════════════════════
+// HABILIDADES
+// ═══════════════════════════════════════════════
+
+// Lista de habilidades que serão exibidas na página
 let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
+// insere uma nova habilidade usando o push
 habilidades.push("Linux");
+
 const listaHabilidades = document.getElementById("lista-habilidades");
+
+// Ícone correspondente a cada habilidade
 const icones = {
     HTML:"code", CSS:"palette", JS:"javascript",
     Python:"terminal", SQL:"storage", Java:"coffee", Linux:"laptop"
 };
 
+// Cria um item visual na lista para cada habilidade, com ícone e nome
 for (let i = 0; i < habilidades.length; i++) {
     const li = document.createElement("li");
     li.classList.add("habilidade-item");
@@ -104,15 +135,25 @@ for (let i = 0; i < habilidades.length; i++) {
     listaHabilidades.appendChild(li);
 }
 
-// ── QUIZ ──
+
+// ═══════════════════════════════════════════════
+// QUIZ DE PERFIL DEV
+// ═══════════════════════════════════════════════
+
 const btnVisual     = document.getElementById("btn-visual");
 const btnLogica     = document.getElementById("btn-logica");
 const resultadoQuiz = document.getElementById("resultado-quiz");
+
+// Contadores de votos para cada perfil
 let pontosFront = 0, pontosBack = 0;
 
+// Cada clique em um botão adiciona um ponto ao perfil correspondente
+// e chama a função que exibe o resultado atualizado
 btnVisual.addEventListener("click", () => { pontosFront++; exibirPerfil(); });
 btnLogica.addEventListener("click", () => { pontosBack++;  exibirPerfil(); });
 
+// Com base nos votos acumulados, exibe o perfil dominante:
+// Front-End, Back-End ou Full Stack (empate)
 function exibirPerfil() {
     if (pontosFront > pontosBack) {
         resultadoQuiz.className = "front-end";
@@ -132,7 +173,12 @@ function exibirPerfil() {
     }
 }
 
-// ── PROJETOS ──
+
+// ═══════════════════════════════════════════════
+// PROJETOS
+// ═══════════════════════════════════════════════
+
+// Lista com as informações de cada projeto: nome, tecnologias, ferramentas, descrição e link
 let projetos = [
     {
         nome: "EstaciON",
@@ -166,6 +212,7 @@ let projetos = [
 
 const listaProjetos = document.getElementById("lista-projetos");
 
+// Cria um card visual na página para cada projeto da lista acima
 for (let i = 0; i < projetos.length; i++) {
     const li = document.createElement("li");
     li.classList.add("projeto-item");
@@ -179,11 +226,18 @@ for (let i = 0; i < projetos.length; i++) {
     listaProjetos.appendChild(li);
 }
 
-// ── VISITANTE ──
+
+// ═══════════════════════════════════════════════
+// SAUDAÇÃO AO VISITANTE
+// ═══════════════════════════════════════════════
+
 const inputNome         = document.getElementById("inputNome");
 const btnEnviar         = document.getElementById("btnEnviar");
 const saudacaoVisitante = document.getElementById("saudacao-visitante");
 
+// Lê o nome digitado pelo visitante e exibe uma saudação personalizada
+// com "Bom dia", "Boa tarde" ou "Boa noite" de acordo com o horário atual.
+// Se o campo estiver vazio, o campo treme para avisar o usuário
 function mostrarSaudacao() {
     const nome = inputNome.value.trim();
     if (!nome) {
@@ -202,19 +256,29 @@ function mostrarSaudacao() {
     inputNome.focus();
 }
 
+// Impede que o visitante digite números ou símbolos no campo de nome
 inputNome.addEventListener("input", () => {
     inputNome.value = inputNome.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, "");
 });
+
+// Permite enviar o nome tanto pelo botão quanto pressionando Enter
 btnEnviar.addEventListener("click", mostrarSaudacao);
 inputNome.addEventListener("keydown", e => {
     if (e.key === "Enter") mostrarSaudacao();
 });
 
-// ── POKÉMON ──
+
+// ═══════════════════════════════════════════════
+// BUSCA DE POKÉMON
+// ═══════════════════════════════════════════════
+
 const inputNomePoke = document.getElementById("inputNomePoke");
 const btnEnviarPoke = document.getElementById("btnEnviarPoke");
 const mostrarPoke   = document.getElementById("mostrarPoke");
 
+// Busca as informações do Pokémon digitado usando a API PokéAPI,
+// e exibe o nome, tipo, habilidade e imagem dele na página.
+// Se o Pokémon não for encontrado, mostra uma mensagem de erro
 async function buscarPokemon() {
     const nome = inputNomePoke.value.trim().toLowerCase();
 
@@ -233,7 +297,6 @@ async function buscarPokemon() {
         const imagem      = dados.sprites.front_default;
 
         mostrarPoke.innerHTML = `
-    
             <span>O pokémon <strong>${nomePokemon}</strong> tem o tipo <strong>${tipo}</strong>
             e a habilidade <strong>${habilidade}</strong>.</span> <p>Aqui está uma imagem dele:</p>
             <img src="${imagem}" alt="${nomePokemon}" style="image-rendering:pixelated; width:96px; height:96px;"/>
@@ -247,15 +310,25 @@ async function buscarPokemon() {
     }
 }
 
+// Impede que o usuário digite números no campo de nome do Pokémon
 inputNomePoke.addEventListener("input", () => {
     inputNomePoke.value = inputNomePoke.value.replace(/[^a-zA-ZÀ-ÿ\s\-]/g, "");
 });
+
+// Permite buscar o Pokémon tanto pelo botão quanto pressionando Enter
 btnEnviarPoke.addEventListener("click", buscarPokemon);
 inputNomePoke.addEventListener("keydown", e => {
     if (e.key === "Enter") buscarPokemon();
 });
 
-//SCROLL 
+
+// ═══════════════════════════════════════════════
+// ANIMAÇÃO DE SCROLL
+// ═══════════════════════════════════════════════
+
+// Prepara as seções da página para aparecerem com animação conforme
+// o usuário vai rolando a tela para baixo (cada seção "entra" suavemente
+// quando fica visível na tela)
 function initScrollReveal() {
     const fotoPerfil = document.getElementById("foto-perfil");
     const dados      = document.getElementById("dados");
@@ -286,6 +359,8 @@ function initScrollReveal() {
     const listaProj = document.getElementById("lista-projetos");
     if (listaProj) listaProj.classList.add("reveal-stagger");
 
+    // Fica "observando" cada seção e, quando ela entra na tela,
+    // dispara a animação de aparecimento
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -302,4 +377,5 @@ function initScrollReveal() {
         .forEach(el => observer.observe(el));
 }
 
+// Inicia as animações de scroll assim que a página termina de carregar
 window.addEventListener("load", initScrollReveal);
