@@ -60,7 +60,7 @@ function carregarDados() {
 
 // Datas das formaturas e ingressão nos cursos
 let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
-let anoFormatura2 = 2026, mesFormatura2 = 9,  diaFormatura2 = 15;
+let anoFormatura2 = 2026, mesFormatura2 = 12,  diaFormatura2 = 15;
 let anoIngresso1  = 2026, mesIngresso1  = 2,  diaIngresso1  = 1;
 let anoIngresso2  = 2025, mesIngresso2  = 2,  diaIngresso2  = 10;
 
