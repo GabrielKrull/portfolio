@@ -53,60 +53,6 @@ function carregarDados() {
     document.getElementById("minhaBio").innerText = minhaBio;
 }
 
-
-// ═══════════════════════════════════════════════
-// DATAS DE INGRESSO E FORMATURA
-// ═══════════════════════════════════════════════
-
-// Datas das formaturas e ingressão nos cursos
-let anoFormatura1 = 2030, mesFormatura1 = 12, diaFormatura1 = 26;
-let anoFormatura2 = 2026, mesFormatura2 = 12,  diaFormatura2 = 15;
-let anoIngresso1  = 2026, mesIngresso1  = 2,  diaIngresso1  = 1;
-let anoIngresso2  = 2025, mesIngresso2  = 2,  diaIngresso2  = 10;
-
-// Exibe na página os anos de formatura e quantos anos faltam para cada curso
-function carregarData() {
-    document.getElementById("anoFormatura1").innerText =
-        "Ano das Formaturas: " + anoFormatura1 + " e " + anoFormatura2;
-    document.getElementById("tempoRestanteFormaturas").innerText =
-        `Anos restantes para formar: ${anoFormatura1 - anoIngresso1} anos para Engenharia de Software e ${anoFormatura2 - anoIngresso2} ano para Técnico em Desenvolvimento de Sistemas`;
-}
-
-// Recebe uma data e calcula a diferença entre hoje e essa data,
-// retornando o resultado em dias, meses e anos
-function calcular(ano, mes, dia) {
-    const hoje = new Date();
-    hoje.setHours(0, 0, 0, 0);
-    const alvo   = new Date(ano, mes - 1, dia);
-    const diffMs = alvo - hoje;
-    const dias   = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-    const anos   = Math.floor(Math.abs(dias) / 365);
-    const meses  = Math.floor((Math.abs(dias) % 365) / 30);
-    const diasR  = Math.abs(dias) % 30;
-    return { dias, anos, meses, diasR };
-}
-
-// Calcula o tempo restante para cada formatura e ingresso
-const f1 = calcular(anoFormatura1, mesFormatura1, diaFormatura1);
-const f2 = calcular(anoFormatura2, mesFormatura2, diaFormatura2);
-const i1 = calcular(anoIngresso1,  mesIngresso1,  diaIngresso1);
-const i2 = calcular(anoIngresso2,  mesIngresso2,  diaIngresso2);
-
-// Exibe na página as datas de ingresso e o tempo restante para as formaturas.
-// Se a Formatura 1 já passou, exibe "Já formei" no lugar
-function carregarDuração() {
-    document.getElementById("formatura2").innerHTML =
-        `Formatura 2: ${f2.dias} dias (${f2.anos}a ${f2.meses}m ${f2.diasR}d)`;
-    document.getElementById("ingresso1").innerHTML =
-        `Ingresso 1: 01 de fevereiro de 2026`;
-    document.getElementById("ingresso2").innerHTML =
-        `Ingresso 2: 10 de fevereiro de 2025`;
-    document.getElementById("formatura1").innerHTML = f1.dias > 0
-        ? `Formatura 1: ${f1.dias} dias (${f1.anos}a ${f1.meses}m ${f1.diasR}d)`
-        : "Já formei";
-}
-
-
 // ═══════════════════════════════════════════════
 // HABILIDADES
 // ═══════════════════════════════════════════════
