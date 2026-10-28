@@ -1,0 +1,61 @@
+{
+  "personal": {
+    "name": "Gabriel Alves Krull",
+    "title": "Desenvolvedor Frontend apaixonado por transformar ideias em experiências digitais incríveis",
+    "bio": "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.",
+    "email": "bielpoow@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/gabriel-alves-krull-29b76636a/",
+    "github": "https://github.com/GabrielKrull"
+  },
+  "skills": [
+    "HTML",
+    "CSS",
+    "JS",
+    "Python",
+    "SQL",
+    "Java",
+    "Linux"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "nome": "EstaciON",
+      "categoria": "APLICAÇÃO DESKTOP",
+      "descricao": "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
+      "tecnologias": ["Python", "Tkinter", "SQLite", "fpdf2"],
+      "conhecimentos": "VsCode, Git, GitHub, pip, PyInstaller",
+      "link": "https://github.com/GabrielKrull/EstaciON",
+      "image": null
+    },
+    {
+      "id": 2,
+      "nome": "M&G Energia",
+      "categoria": "SITE INSTITUCIONAL",
+      "descricao": "Site para uma empresa de energia, com HTML, CSS e JavaScript, focado em apresentação institucional.",
+      "tecnologias": ["HTML", "CSS", "JavaScript"],
+      "conhecimentos": "VsCode, Git, GitHub",
+      "link": "https://github.com/GabrielKrull/M-G-Energia",
+      "image": null
+    },
+    {
+      "id": 3,
+      "nome": "Sistema de catalogar filmes, seriados e livros",
+      "categoria": "SISTEMA CONSOLE",
+      "descricao": "Sistema para catalogar filmes, seriados e livros, desenvolvido em Python com foco em organização e lógica.",
+      "tecnologias": ["Python"],
+      "conhecimentos": "VsCode, Modularização, Hierarquia",
+      "link": "https://github.com/GabrielKrull/sistemadefilmeserielivro",
+      "image": null
+    },
+    {
+      "id": 4,
+      "nome": "Qualidade de Software",
+      "categoria": "SITE EDUCACIONAL",
+      "descricao": "Site simples para testes de qualidade de software, com HTML, CSS e JavaScript.",
+      "tecnologias": ["HTML", "CSS", "JavaScript"],
+      "conhecimentos": "VsCode, Git, GitHub, QA e Testes",
+      "link": "https://github.com/GabrielKrull/Trabalho-Qualidade-de-software",
+      "image": null
+    }
+  ]
+}

@@ -1,231 +1,238 @@
-// ═══════════════════════════════════════════════
+// ========================================
 // TEMA CLARO / ESCURO
-// ═══════════════════════════════════════════════
+// ========================================
 
-const btn = document.getElementById('modoClaroEscuro');
-const html = document.documentElement;
+const btnTema = document.getElementById('modoClaroEscuro');
+const htmlEl = document.documentElement;
 
-// Quando o botão de tema é clicado, troca entre o modo claro e escuro
-// e atualiza o ícone do botão para refletir o tema atual
-btn.addEventListener('click', () => {
-    const isLight = html.getAttribute('data-theme') === 'light';
-    btn.innerHTML = isLight
-        ? '<span class="material-icons">light_mode</span>'
-        : '<span class="material-icons">dark_mode</span>';
-    html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-});
+if (btnTema) {
+    // Verifica tema salvo ou usa light como padrão
+    const temaSalvo = localStorage.getItem('theme') || 'light';
+    htmlEl.setAttribute('data-theme', temaSalvo);
+    
+    // Atualiza ícone
+    const icon = btnTema.querySelector('.material-icons');
+    if (icon) {
+        icon.textContent = temaSalvo === 'light' ? 'dark_mode' : 'light_mode';
+    }
+    
+    btnTema.addEventListener('click', () => {
+        const isLight = htmlEl.getAttribute('data-theme') === 'light';
+        const novoTema = isLight ? 'dark' : 'light';
+        
+        htmlEl.setAttribute('data-theme', novoTema);
+        localStorage.setItem('theme', novoTema);
+        
+        if (icon) {
+            icon.textContent = novoTema === 'light' ? 'dark_mode' : 'light_mode';
+        }
+    });
+}
 
-
-// ═══════════════════════════════════════════════
-// MENU HAMBÚRGUER (mobile)
-// ═══════════════════════════════════════════════
+// ========================================
+// MENU HAMBURGER (MOBILE)
+// ========================================
 
 const menuBurger = document.getElementById("menu-burger");
-const menu = document.getElementById("menu");
+const menuNav = document.getElementById("menu");
 
-// Quando o ícone de menu é clicado, abre ou fecha o menu de navegação
-menuBurger.addEventListener("click", () => {
-    menuBurger.classList.toggle("active");
-    menu.classList.toggle("visivel");
-});
-
-// Quando o usuário clica em qualquer link do menu, o menu fecha automaticamente
-menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-        menuBurger.classList.remove("active");
-        menu.classList.remove("visivel");
+if (menuBurger && menuNav) {
+    menuBurger.addEventListener("click", () => {
+        menuBurger.classList.toggle("active");
+        menuNav.classList.toggle("open");
     });
-});
 
+    // Fecha menu ao clicar em link
+    menuNav.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            menuBurger.classList.remove("active");
+            menuNav.classList.remove("open");
+        });
+    });
+}
 
-// ═══════════════════════════════════════════════
+// ========================================
 // DADOS PESSOAIS
-// ═══════════════════════════════════════════════
+// ========================================
 
-// Preenche na página o nome, título profissional e bio
 function carregarDados() {
-    const NOME = "Gabriel Alves Krull";
-    let tituloProfissional = "Estudante de Engenharia de Software e Técnico em Desenvolvimento de Sistemas";
-    let minhaBio = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
-
-    document.getElementById("meuNome").innerText = NOME;
-    document.getElementById("tituloProfissional").innerText = tituloProfissional;
-    document.getElementById("minhaBio").innerText = minhaBio;
-}
-
-// ═══════════════════════════════════════════════
-// HABILIDADES
-// ═══════════════════════════════════════════════
-
-// Lista de habilidades que serão exibidas na página
-let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java"];
-// insere uma nova habilidade usando o push
-habilidades.push("Linux");
-
-const listaHabilidades = document.getElementById("lista-habilidades");
-
-// Ícone correspondente a cada habilidade
-const icones = {
-    HTML:"code", CSS:"palette", JS:"javascript",
-    Python:"terminal", SQL:"storage", Java:"coffee", Linux:"laptop"
-};
-
-// Cria um item visual na lista para cada habilidade, com ícone e nome
-for (let i = 0; i < habilidades.length; i++) {
-    const li = document.createElement("li");
-    li.classList.add("habilidade-item");
-    li.innerHTML = `
-        <span class="material-icons habilidade-icon">${icones[habilidades[i]] ?? "star"}</span>
-        <span class="habilidade-nome">${habilidades[i]}</span>
-    `;
-    listaHabilidades.appendChild(li);
-}
-
-
-// ═══════════════════════════════════════════════
-// QUIZ DE PERFIL DEV
-// ═══════════════════════════════════════════════
-
-const btnVisual     = document.getElementById("btn-visual");
-const btnLogica     = document.getElementById("btn-logica");
-const resultadoQuiz = document.getElementById("resultado-quiz");
-
-// Contadores de votos para cada perfil
-let pontosFront = 0, pontosBack = 0;
-
-// Cada clique em um botão adiciona um ponto ao perfil correspondente
-// e chama a função que exibe o resultado atualizado
-btnVisual.addEventListener("click", () => { pontosFront++; exibirPerfil(); });
-btnLogica.addEventListener("click", () => { pontosBack++;  exibirPerfil(); });
-
-// Com base nos votos acumulados, exibe o perfil dominante:
-// Front-End, Back-End ou Full Stack (empate)
-function exibirPerfil() {
-    if (pontosFront > pontosBack) {
-        resultadoQuiz.className = "front-end";
-        resultadoQuiz.innerHTML = `<strong>🎨 Você tem perfil Front-End!</strong><br>
-            Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
-            Tecnologias pra você: HTML, CSS, React, Vue.`;
-    } else if (pontosBack > pontosFront) {
-        resultadoQuiz.className = "back-end";
-        resultadoQuiz.innerHTML = `<strong>⚙️ Você tem perfil Back-End!</strong><br>
-            Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
-            Tecnologias pra você: Node.js, Python, bancos de dados.`;
-    } else {
-        resultadoQuiz.className = "full-stack";
-        resultadoQuiz.innerHTML = `<strong>🔄 Você tem perfil Full Stack!</strong><br>
-            Você curte tanto o visual quanto a lógica — o melhor dos dois mundos.
-            Tecnologias pra você: HTML, CSS, Node.js, React, bancos de dados.`;
+    const tituloProfissional = document.getElementById("tituloProfissional");
+    const minhaBio = document.getElementById("minhaBio");
+    
+    if (tituloProfissional) {
+        tituloProfissional.textContent = "Desenvolvedor Frontend apaixonado por transformar ideias em experiências digitais incríveis.";
+    }
+    
+    if (minhaBio) {
+        minhaBio.textContent = "Apaixonado por tecnologia, desenvolvimento de software e criação de soluções que unem design e lógica.";
     }
 }
 
+// ========================================
+// HABILIDADES
+// ========================================
 
-// ═══════════════════════════════════════════════
+let habilidades = ["HTML", "CSS", "JS", "Python", "SQL", "Java", "Linux"];
+
+const listaHabilidades = document.getElementById("lista-habilidades");
+
+const iconesHabilidades = {
+    HTML: "code",
+    CSS: "palette",
+    JS: "javascript",
+    Python: "terminal",
+    SQL: "storage",
+    Java: "coffee",
+    Linux: "laptop"
+};
+
+if (listaHabilidades) {
+    listaHabilidades.innerHTML = '';
+    for (let i = 0; i < habilidades.length; i++) {
+        const skillItem = document.createElement("div");
+        skillItem.classList.add("skill-item");
+        skillItem.innerHTML = `
+            <span class="material-icons skill-icon">${iconesHabilidades[habilidades[i]] ?? "star"}</span>
+            <span class="skill-name">${habilidades[i]}</span>
+        `;
+        listaHabilidades.appendChild(skillItem);
+    }
+}
+
+// ========================================
+// QUIZ DE PERFIL DEV
+// ========================================
+
+const btnVisual = document.getElementById("btn-visual");
+const btnLogica = document.getElementById("btn-logica");
+const resultadoQuiz = document.getElementById("resultado-quiz");
+
+let pontosFront = 0;
+let pontosBack = 0;
+
+if (btnVisual) {
+    btnVisual.addEventListener("click", () => {
+        pontosFront++;
+        exibirPerfil();
+    });
+}
+
+if (btnLogica) {
+    btnLogica.addEventListener("click", () => {
+        pontosBack++;
+        exibirPerfil();
+    });
+}
+
+function exibirPerfil() {
+    if (!resultadoQuiz) return;
+    
+    resultadoQuiz.className = "quiz-result";
+    
+    if (pontosFront > pontosBack) {
+        resultadoQuiz.classList.add("front-end");
+        resultadoQuiz.innerHTML = `
+            <strong>✨ Você tem perfil Front-End!</strong><br><br>
+            Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.<br>
+            <strong>Tecnologias pra você:</strong> HTML, CSS, JavaScript, React, Vue.
+        `;
+    } else if (pontosBack > pontosFront) {
+        resultadoQuiz.classList.add("back-end");
+        resultadoQuiz.innerHTML = `
+            <strong>⚙️ Você tem perfil Back-End!</strong><br><br>
+            Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.<br>
+            <strong>Tecnologias pra você:</strong> Node.js, Python, SQL, bancos de dados.
+        `;
+    } else {
+        resultadoQuiz.classList.add("full-stack");
+        resultadoQuiz.innerHTML = `
+            <strong>🚀 Você tem perfil Full Stack!</strong><br><br>
+            Você curte tanto o visual quanto a lógica — o melhor dos dois mundos.<br>
+            <strong>Tecnologias pra você:</strong> HTML, CSS, JavaScript, Node.js, Python, bancos de dados.
+        `;
+    }
+}
+
+// ========================================
 // PROJETOS
-// ═══════════════════════════════════════════════
+// ========================================
 
-// Lista com as informações de cada projeto: nome, tecnologias, ferramentas, descrição e link
 let projetos = [
     {
         nome: "EstaciON",
-        tecnologias: ["Python, Tkinter, SQLite, fpdf2, datetime."],
-        conhecimentos: "VsCode, Git, GitHub, pip, PyInstaller.",
+        categoria: "APLICAÇÃO DESKTOP",
         descricao: "Aplicação desktop feita para controle de estacionamento, com interface gráfica, banco de dados e gerador de relatórios.",
+        tecnologias: ["Python", "Tkinter", "SQLite", "fpdf2"],
         link: "https://github.com/GabrielKrull/EstaciON"
     },
     {
         nome: "M&G Energia",
-        tecnologias: ["HTML, CSS, JS"],
-        conhecimentos: "VsCode, Git, GitHub",
-        descricao: "Site para uma empresa de energia, com HTML, CSS e JS.",
+        categoria: "SITE INSTITUCIONAL",
+        descricao: "Site para uma empresa de energia, com HTML, CSS e JavaScript, focado em apresentação institucional.",
+        tecnologias: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/GabrielKrull/M-G-Energia"
     },
     {
         nome: "Sistema de catalogar filmes, seriados e livros",
-        tecnologias: ["Python, Random e Sys"],
-        conhecimentos: "VsCode, Modularização, Hieraquia",
-        descricao: "Sistema para catalogar filmes, seriados e livros, com Python, Random e Sys.",
+        categoria: "SISTEMA CONSOLE",
+        descricao: "Sistema para catalogar filmes, seriados e livros, desenvolvido em Python com foco em organização e lógica.",
+        tecnologias: ["Python"],
         link: "https://github.com/GabrielKrull/sistemadefilmeserielivro"
     },
     {
         nome: "Qualidade de Software",
-        tecnologias: ["HTML, CSS, JS"],
-        conhecimentos: "VsCode, Git, GitHub, QA e Testes",
-        descricao: "Site simples para testes de qualidade de software, com HTML, CSS e JS.",
+        categoria: "SITE EDUCACIONAL",
+        descricao: "Site simples para testes de qualidade de software, com HTML, CSS e JavaScript.",
+        tecnologias: ["HTML", "CSS", "JavaScript"],
         link: "https://github.com/GabrielKrull/Trabalho-Qualidade-de-software"
     }
 ];
 
 const listaProjetos = document.getElementById("lista-projetos");
 
-// Cria um card visual na página para cada projeto da lista acima
-for (let i = 0; i < projetos.length; i++) {
-    const li = document.createElement("li");
-    li.classList.add("projeto-item");
-    li.innerHTML = `
-        <h3 class="projeto-nome">${projetos[i].nome}</h3>
-        <p class="projeto-tecnologias"><span class="projeto-label">Tecnologias:</span> ${projetos[i].tecnologias}</p>
-        <p class="projeto-conhecimentos"><span class="projeto-label">Ferramentas:</span> ${projetos[i].conhecimentos}</p>
-        <p class="projeto-descricao">${projetos[i].descricao}</p>
-        <a href="${projetos[i].link}" target="_blank" class="projeto-link">Ver projeto</a>
-    `;
-    listaProjetos.appendChild(li);
-}
-
-
-// ═══════════════════════════════════════════════
-// SAUDAÇÃO AO VISITANTE
-// ═══════════════════════════════════════════════
-
-const inputNome         = document.getElementById("inputNome");
-const btnEnviar         = document.getElementById("btnEnviar");
-const saudacaoVisitante = document.getElementById("saudacao-visitante");
-
-// Lê o nome digitado pelo visitante e exibe uma saudação personalizada
-// com "Bom dia", "Boa tarde" ou "Boa noite" de acordo com o horário atual.
-// Se o campo estiver vazio, o campo treme para avisar o usuário
-function mostrarSaudacao() {
-    const nome = inputNome.value.trim();
-    if (!nome) {
-        inputNome.classList.add("input-erro");
-        setTimeout(() => inputNome.classList.remove("input-erro"), 600);
-        return;
+if (listaProjetos) {
+    listaProjetos.innerHTML = '';
+    for (let i = 0; i < projetos.length; i++) {
+        const card = document.createElement("article");
+        card.classList.add("project-card");
+        card.innerHTML = `
+            <div class="project-card-image">
+                <div class="project-card-placeholder">
+                    <span class="project-placeholder-initials">${projetos[i].nome.substring(0, 2).toUpperCase()}</span>
+                </div>
+                <a href="${projetos[i].link}" target="_blank" rel="noopener noreferrer" class="project-card-arrow" aria-label="Ver projeto ${projetos[i].nome}">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.75 11.25L11.25 6.75M11.25 6.75H6.75M11.25 6.75V11.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="project-card-content">
+                <span class="project-card-category">${projetos[i].categoria}</span>
+                <h3 class="project-card-title">${projetos[i].nome}</h3>
+                <p class="project-card-desc">${projetos[i].descricao}</p>
+                <a href="${projetos[i].link}" target="_blank" rel="noopener noreferrer" class="project-card-link">
+                    <span>Ver projeto</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.333 8H12.667M12.667 8L8 3.333M12.667 8L8 12.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        `;
+        listaProjetos.appendChild(card);
     }
-    const hora    = new Date().getHours();
-    const periodo = hora < 12 ? "Bom dia" : hora < 18 ? "Boa tarde" : "Boa noite";
-    saudacaoVisitante.innerHTML = `
-        <span class="material-icons saudacao-icon">waving_hand</span>
-        <span>${periodo}, <strong>${nome}</strong>! Seja bem-vindo(a) ao meu portfólio. Espero que goste do que encontrar por aqui!</span>
-    `;
-    saudacaoVisitante.classList.add("visivel");
-    inputNome.value = "";
-    inputNome.focus();
 }
 
-// Impede que o visitante digite números ou símbolos no campo de nome
-inputNome.addEventListener("input", () => {
-    inputNome.value = inputNome.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, "");
-});
-
-// Permite enviar o nome tanto pelo botão quanto pressionando Enter
-btnEnviar.addEventListener("click", mostrarSaudacao);
-inputNome.addEventListener("keydown", e => {
-    if (e.key === "Enter") mostrarSaudacao();
-});
-
-
-// ═══════════════════════════════════════════════
+// ========================================
 // BUSCA DE POKÉMON
-// ═══════════════════════════════════════════════
+// ========================================
 
 const inputNomePoke = document.getElementById("inputNomePoke");
 const btnEnviarPoke = document.getElementById("btnEnviarPoke");
-const mostrarPoke   = document.getElementById("mostrarPoke");
+const mostrarPoke = document.getElementById("mostrarPoke");
 
-// Busca as informações do Pokémon digitado usando a API PokéAPI,
-// e exibe o nome, tipo, habilidade e imagem dele na página.
-// Se o Pokémon não for encontrado, mostra uma mensagem de erro
 async function buscarPokemon() {
+    if (!inputNomePoke || !mostrarPoke) return;
+    
     const nome = inputNomePoke.value.trim().toLowerCase();
 
     if (!nome) {
@@ -234,94 +241,61 @@ async function buscarPokemon() {
         return;
     }
 
-    const dados = await buscarAPI(`https://pokeapi.co/api/v2/pokemon/${nome}`);
-
-    if (dados) {
+    try {
+        const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
+        if (!resposta.ok) {
+            throw new Error("Não encontrado");
+        }
+        const dados = await resposta.json();
+        
         const nomePokemon = dados.name;
-        const tipo        = dados.types[0].type.name;
-        const habilidade  = dados.abilities[1]?.ability.name ?? dados.abilities[0].ability.name;
-        const imagem      = dados.sprites.front_default;
+        const tipo = dados.types[0].type.name;
+        const habilidade = dados.abilities[1]?.ability.name ?? dados.abilities[0].ability.name;
+        const imagem = dados.sprites.front_default;
 
         mostrarPoke.innerHTML = `
-            <span>O pokémon <strong>${nomePokemon}</strong> tem o tipo <strong>${tipo}</strong>
-            e a habilidade <strong>${habilidade}</strong>.</span> <p>Aqui está uma imagem dele:</p>
-            <img src="${imagem}" alt="${nomePokemon}" style="image-rendering:pixelated; width:96px; height:96px;"/>
+            <img src="${imagem}" alt="${nomePokemon}" style="image-rendering:pixelated; width:64px; height:64px;"/>
+            <span>O pokémon <strong>${nomePokemon}</strong> tem o tipo <strong>${tipo}</strong> e a habilidade <strong>${habilidade}</strong>.</span>
         `;
-        mostrarPoke.classList.add("visivel");
+        mostrarPoke.style.display = "flex";
         inputNomePoke.value = "";
         inputNomePoke.focus();
-    } else {
+    } catch (erro) {
         mostrarPoke.innerHTML = `<span>Pokémon não encontrado. Verifique o nome e tente novamente.</span>`;
-        mostrarPoke.classList.add("visivel");
+        mostrarPoke.style.display = "flex";
     }
 }
 
-// Impede que o usuário digite números no campo de nome do Pokémon
-inputNomePoke.addEventListener("input", () => {
-    inputNomePoke.value = inputNomePoke.value.replace(/[^a-zA-ZÀ-ÿ\s\-]/g, "");
-});
-
-// Permite buscar o Pokémon tanto pelo botão quanto pressionando Enter
-btnEnviarPoke.addEventListener("click", buscarPokemon);
-inputNomePoke.addEventListener("keydown", e => {
-    if (e.key === "Enter") buscarPokemon();
-});
-
-
-// ═══════════════════════════════════════════════
-// ANIMAÇÃO DE SCROLL
-// ═══════════════════════════════════════════════
-
-// Prepara as seções da página para aparecerem com animação conforme
-// o usuário vai rolando a tela para baixo (cada seção "entra" suavemente
-// quando fica visível na tela)
-function initScrollReveal() {
-    const fotoPerfil = document.getElementById("foto-perfil");
-    const dados      = document.getElementById("dados");
-    if (fotoPerfil) fotoPerfil.classList.add("reveal-left");
-    if (dados)      dados.classList.add("reveal-right");
-
-    const secaoVisitante = document.getElementById("secao-visitante");
-    if (secaoVisitante) secaoVisitante.classList.add("reveal");
-
-    const secaoBio = document.getElementById("secao-bio");
-    if (secaoBio) secaoBio.classList.add("reveal-left");
-
-    const secaoDatas = document.getElementById("secao-datas");
-    if (secaoDatas) secaoDatas.classList.add("reveal");
-
-    const quiz = document.getElementById("quiz");
-    if (quiz) quiz.classList.add("reveal");
-
-    const secaoProjetos = document.getElementById("secao-projetos");
-    if (secaoProjetos) {
-        const titulo = secaoProjetos.querySelector(".subtitulo");
-        if (titulo) titulo.classList.add("reveal");
-    }
-
-    const listaHab  = document.getElementById("lista-habilidades");
-    if (listaHab)  listaHab.classList.add("reveal-stagger");
-
-    const listaProj = document.getElementById("lista-projetos");
-    if (listaProj) listaProj.classList.add("reveal-stagger");
-
-    // Fica "observando" cada seção e, quando ela entra na tela,
-    // dispara a animação de aparecimento
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visivel-scroll");
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px"
+if (inputNomePoke) {
+    inputNomePoke.addEventListener("input", () => {
+        inputNomePoke.value = inputNomePoke.value.replace(/[^a-zA-Z\-]/g, "");
     });
-
-    document.querySelectorAll(".reveal, .reveal-left, .reveal-right, .reveal-stagger")
-        .forEach(el => observer.observe(el));
 }
 
-// Inicia as animações de scroll assim que a página termina de carregar
-window.addEventListener("load", initScrollReveal);
+if (btnEnviarPoke) {
+    btnEnviarPoke.addEventListener("click", buscarPokemon);
+}
+
+if (inputNomePoke) {
+    inputNomePoke.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            buscarPokemon();
+        }
+    });
+}
+
+// ========================================
+// INICIALIZAÇÃO
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    carregarDados();
+    
+    // Adiciona classe para animação de entrada
+    setTimeout(() => {
+        document.querySelectorAll('.hero-animate').forEach((el, index) => {
+            el.style.opacity = '1';
+        });
+    }, 100);
+});
