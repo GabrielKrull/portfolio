@@ -453,6 +453,33 @@ a {
     gap: 1rem;
 }
 
+.cv-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.75rem 1.1rem;
+    border: 1px solid var(--text-primary);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.cv-link:hover {
+    transform: translateY(-1px);
+    background: var(--accent-lime);
+    border-color: var(--accent-lime);
+    color: var(--bg-dark);
+}
+
+.cv-link svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
 .theme-toggle {
     background: transparent;
     border: 1px solid var(--border-medium);
